@@ -1,0 +1,104 @@
+{
+    "content": [
+        {
+            "id": 1,
+            "temp": 23.17,
+            "humidity": 90,
+            "cityName": "Pombos",
+            "cityCountry": "BR",
+            "main": "Rain",
+            "description": "chuva leve",
+            "timer": "2023-11-20 03:00:00"
+        },
+        {
+            "id": 2,
+            "temp": 23.31,
+            "humidity": 89,
+            "cityName": "Pombos",
+            "cityCountry": "BR",
+            "main": "Rain",
+            "description": "chuva leve",
+            "timer": "2023-11-20 06:00:00"
+        },
+        {
+            "id": 3,
+            "temp": 23.55,
+            "humidity": 87,
+            "cityName": "Pombos",
+            "cityCountry": "BR",
+            "main": "Clouds",
+            "description": "nublado",
+            "timer": "2023-11-20 09:00:00"
+        },
+        {
+            "id": 4,
+            "temp": 27.11,
+            "humidity": 67,
+            "cityName": "Pombos",
+            "cityCountry": "BR",
+            "main": "Clouds",
+            "description": "nublado",
+            "timer": "2023-11-20 12:00:00"
+        },
+        {
+            "id": 5,
+            "temp": 30.22,
+            "humidity": 50,
+            "cityName": "Pombos",
+            "cityCountry": "BR",
+            "main": "Clouds",
+            "description": "nublado",
+            "timer": "2023-11-20 15:00:00"
+        },
+        {
+            "id": 6,
+            "temp": 25.17,
+            "humidity": 75,
+            "cityName": "Pombos",
+            "cityCountry": "BR",
+            "main": "Clouds",
+            "description": "nublado",
+            "timer": "2023-11-21 00:00:00"
+        },
+        {
+            "id": 7,
+            "temp": 22.72,
+            "humidity": 88,
+            "cityName": "Pombos",
+            "cityCountry": "BR",
+            "main": "Clouds",
+            "description": "algumas nuvens",
+            "timer": "2023-11-22 00:00:00"
+        },
+        {
+            "id": 8,
+            "temp": 22.9,
+            "humidity": 84,
+            "cityName": "Pombos",
+            "cityCountry": "BR",
+            "main": "Clear",
+            "description": "céu limpo",
+            "timer": "2023-11-23 00:00:00"
+        },
+        {
+            "id": 9,
+            "temp": 22.74,
+            "humidity": 85,
+            "cityName": "Pombos",
+            "cityCountry": "BR",
+            "main": "Clear",
+            "description": "céu limpo",
+            "timer": "2023-11-24 00:00:00"
+        },
+        {
+            "id": 10,
+            "temp": 22.11,
+            "humidity": 86,
+            "cityName": "Pombos",
+            "cityCountry": "BR",
+            "main": "Clear",
+            "description": "céu limpo",
+            "timer": "2023-11-25 00:00:00"
+        }
+    ]
+}
