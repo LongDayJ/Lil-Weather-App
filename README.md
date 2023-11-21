@@ -2,6 +2,9 @@
 
 A new Flutter project.
 
+## Como rodar o mock
+`java -jar wiremock-standalone-3.3.1.jar --port 9090`
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
