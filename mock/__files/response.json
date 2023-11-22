@@ -6,7 +6,7 @@
             "humidity": 90,
             "cityName": "Pombos",
             "cityCountry": "BR",
-            "main": "Rain",
+            "weather": "Rain",
             "description": "chuva leve",
             "timer": "2023-11-20 03:00:00"
         },
@@ -16,7 +16,7 @@
             "humidity": 89,
             "cityName": "Pombos",
             "cityCountry": "BR",
-            "main": "Rain",
+            "weather": "Rain",
             "description": "chuva leve",
             "timer": "2023-11-20 06:00:00"
         },
@@ -26,7 +26,7 @@
             "humidity": 87,
             "cityName": "Pombos",
             "cityCountry": "BR",
-            "main": "Clouds",
+            "weather": "Clouds",
             "description": "nublado",
             "timer": "2023-11-20 09:00:00"
         },
@@ -36,7 +36,7 @@
             "humidity": 67,
             "cityName": "Pombos",
             "cityCountry": "BR",
-            "main": "Clouds",
+            "weather": "Clouds",
             "description": "nublado",
             "timer": "2023-11-20 12:00:00"
         },
@@ -46,7 +46,7 @@
             "humidity": 50,
             "cityName": "Pombos",
             "cityCountry": "BR",
-            "main": "Clouds",
+            "weather": "Clouds",
             "description": "nublado",
             "timer": "2023-11-20 15:00:00"
         },
@@ -56,7 +56,7 @@
             "humidity": 75,
             "cityName": "Pombos",
             "cityCountry": "BR",
-            "main": "Clouds",
+            "weather": "Clouds",
             "description": "nublado",
             "timer": "2023-11-21 00:00:00"
         },
@@ -66,7 +66,7 @@
             "humidity": 88,
             "cityName": "Pombos",
             "cityCountry": "BR",
-            "main": "Clouds",
+            "weather": "Clouds",
             "description": "algumas nuvens",
             "timer": "2023-11-22 00:00:00"
         },
@@ -76,7 +76,7 @@
             "humidity": 84,
             "cityName": "Pombos",
             "cityCountry": "BR",
-            "main": "Clear",
+            "weather": "Clear",
             "description": "céu limpo",
             "timer": "2023-11-23 00:00:00"
         },
@@ -86,7 +86,7 @@
             "humidity": 85,
             "cityName": "Pombos",
             "cityCountry": "BR",
-            "main": "Clear",
+            "weather": "Clear",
             "description": "céu limpo",
             "timer": "2023-11-24 00:00:00"
         },
@@ -96,7 +96,7 @@
             "humidity": 86,
             "cityName": "Pombos",
             "cityCountry": "BR",
-            "main": "Clear",
+            "weather": "Clear",
             "description": "céu limpo",
             "timer": "2023-11-25 00:00:00"
         }
