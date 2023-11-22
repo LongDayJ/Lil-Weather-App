@@ -204,25 +204,7 @@ class _WetherCardState extends State<WetherCard>{
   }
 
 }
-class FavoriteButton extends StatefulWidget{
-  const FavoriteButton({super.key});
 
-  @override
-  State<FavoriteButton> createState() => _FavoriteButtonState();
-}
-
-class _FavoriteButtonState extends State<FavoriteButton> {
-  bool standerSelect = false;
-  @override
-  Widget build(BuildContext context){
-    return IconButton(
-      isSelected: ,
-      icon: Icon(Icons.star_border_outlined),
-
-      onPressed: (){},
-    );
-  }
-}
 
 //uma classe chamada city card
 //outra classe chamada wether card 
