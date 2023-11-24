@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:lil_weather/screens/city.dart';
+import 'package:lil_weather/screens/home.dart';
+import 'package:lil_weather/screens/search.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: City(),
+      home: Home(),
     );
   }
 }

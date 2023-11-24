@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:lil_weather/constants/color.dart';
 import 'package:lil_weather/constants/urls.dart';
+import 'package:lil_weather/screens/city.dart';
+import 'package:lil_weather/screens/search.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
@@ -22,7 +24,7 @@ class _HomeState extends State<Home> {
 
   Future<List<Map<String, dynamic>>> filtroDoFiltro() async {
     try {
-      var response = await http.get(Uri.parse("${Constants.baseURL}city/1/"));
+      final response = await http.get(Uri.parse("${Constants.baseURL}Recife"));
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');
       if (response.statusCode == 200) {
@@ -75,9 +77,8 @@ class _HomeState extends State<Home> {
           if (snapshot.hasData && snapshot.data!.isNotEmpty) {
             return Scaffold(
               key: _scaffoldKey,
-              backgroundColor: _isDarkMode
-                  ? BgColor.BgAppbarBlack
-                  : BgColor.BgAppbarWhite,
+              backgroundColor:
+                  _isDarkMode ? BgColor.BgAppbarBlack : BgColor.BgAppbarWhite,
               appBar: AppBar(
                 backgroundColor:
                     _isDarkMode ? BgColor.BgAppbarBlack : BgColor.BgAppbarWhite,
@@ -157,21 +158,55 @@ class _HomeState extends State<Home> {
                                   ? BgColor.BgAppbarWhite
                                   : BgColor.BgAppbarBlack)),
                       onTap: () {
-                        // Implemente a funcionalidade para navegar para a página de pesquisa aqui
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => Search())));
                       },
                     ),
                   ],
                 ),
               ),
               body: SafeArea(
-                child: ListView.builder(
-                  itemCount: snapshot.data!.length,
-                  itemBuilder: (context, index) {
-                    return ListTile(
-                      title: Text(snapshot.data![index]["cityName"]),
-                      subtitle: Text(snapshot.data![index]["cityCountry"]),
-                    );
-                  },
+                child: Stack(
+                  children: [
+                    //Image.asset("../assets/icons/LilW_Logo.png"),
+                    ListView.builder(
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        return ListTile(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => City(
+                                        cityName: snapshot.data![index]
+                                            ["cityName"],
+                                      )),
+                            );
+                          },
+                          title: Text(
+                            snapshot.data![index]["cityName"],
+                            style: TextStyle(
+                              color: _isDarkMode
+                                  ? BgColor.BgAppbarWhite
+                                  : BgColor.BgAppbarBlack,
+                            ),
+                          ),
+                          subtitle: Text(
+                            snapshot.data![index]["description1"] +
+                                ", " +
+                                snapshot.data![index]["cityCountry"],
+                            style: TextStyle(
+                              color: _isDarkMode
+                                  ? BgColor.BgAppbarWhite
+                                  : BgColor.BgAppbarBlack,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ),
             );

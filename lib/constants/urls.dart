@@ -1,3 +1,3 @@
 class Constants {
-  static String baseURL = "https://dw9lw.wiremockapi.cloud/"; 
+  static String baseURL = "https://dw9lw.wiremockapi.cloud/city?cityName="; 
 }
