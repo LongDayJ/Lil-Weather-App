@@ -25,7 +25,7 @@ class _SearchState extends State<Search> {
           }, icon: Icon(Icons.search_rounded),
           ),
       ),
-      backgroundColor: BgColor.ClearBG,
+      backgroundColor: BgColor.BgAppbarBlack,
       body: Container(
       child: SafeArea(
         child: Column(
