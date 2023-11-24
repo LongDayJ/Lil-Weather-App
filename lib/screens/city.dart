@@ -330,7 +330,7 @@ class _CityCardState extends State<CityCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Construtor_cidade(widget.Weather1, widget.Temp1),
-                    favButton(),
+                    favButton(widget.TextColor),
                   ],
                 ),
               ),
@@ -610,7 +610,8 @@ class _WetherCardState extends State<WetherCard> {
 }
 
 class favButton extends StatefulWidget {
-  const favButton({super.key});
+  final Color TextColor;
+  const favButton(this.TextColor, {super.key});
 
   @override
   State<favButton> createState() => _favButtonState();
@@ -626,6 +627,7 @@ class _favButtonState extends State<favButton> {
         isFav ? 
         Icons.star : 
         Icons.star_border_outlined,
+        color: widget.TextColor
       ),
       onPressed: () {
         setState(() {
