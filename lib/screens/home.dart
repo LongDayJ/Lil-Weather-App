@@ -170,7 +170,14 @@ class _HomeState extends State<Home> {
               body: SafeArea(
                 child: Stack(
                   children: [
-                    //Image.asset("../assets/icons/LilW_Logo.png"),
+                    Center(
+                      child: Image.network(
+                        'https://i.imgur.com/e3fXDI6.png',
+                        fit: BoxFit.fitWidth,
+                        height: double.infinity,
+                        width: double.infinity,
+                      ),
+                    ),
                     ListView.builder(
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
