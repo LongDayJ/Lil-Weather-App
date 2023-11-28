@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:lil_weather/constants/color.dart';
-import 'package:lil_weather/screens/seacrh_bar.dart';
+import 'package:lil_weather/screens/search_bar.dart';
 
 
 class Search extends StatefulWidget {
@@ -25,7 +25,7 @@ class _SearchState extends State<Search> {
           }, icon: Icon(Icons.search_rounded),
           ),
       ),
-      backgroundColor: BgColor.BgAppbarBlack,
+      backgroundColor: BgColor.bgAppbarBlack,
       body: Container(
       child: SafeArea(
         child: Column(

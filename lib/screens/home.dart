@@ -1,4 +1,4 @@
-// ignore_for_file: unused_element, prefer_const_constructors
+// ignore_for_file: unused_element, prefer_const_constructors, use_rethrow_when_possible, avoid_print
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -78,24 +78,24 @@ class _HomeState extends State<Home> {
             return Scaffold(
               key: _scaffoldKey,
               backgroundColor:
-                  _isDarkMode ? BgColor.BgAppbarBlack : BgColor.BgAppbarWhite,
+                  _isDarkMode ? BgColor.bgAppbarBlack : BgColor.bgAppbarWhite,
               appBar: AppBar(
                 backgroundColor:
-                    _isDarkMode ? BgColor.BgAppbarBlack : BgColor.BgAppbarWhite,
+                    _isDarkMode ? BgColor.bgAppbarBlack : BgColor.bgAppbarWhite,
                 title: Text(
                   "Lil Weather",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: _isDarkMode
-                        ? BgColor.BgAppbarWhite
-                        : BgColor.BgAppbarBlack,
+                        ? BgColor.bgAppbarWhite
+                        : BgColor.bgAppbarBlack,
                   ),
                 ),
                 centerTitle: true,
               ),
               drawer: Drawer(
                 backgroundColor:
-                    _isDarkMode ? BgColor.BgAppbarBlack : BgColor.BgAppbarWhite,
+                    _isDarkMode ? BgColor.bgAppbarBlack : BgColor.bgAppbarWhite,
                 child: Column(
                   children: [
                     DrawerHeader(
@@ -104,23 +104,23 @@ class _HomeState extends State<Home> {
                           icon: Icon(
                             Icons.close,
                             color: _isDarkMode
-                                ? BgColor.BgAppbarWhite
-                                : BgColor.BgAppbarBlack,
+                                ? BgColor.bgAppbarWhite
+                                : BgColor.bgAppbarBlack,
                           )),
                     ),
                     ListTile(
                       leading: Icon(
                         Icons.brightness_6,
                         color: _isDarkMode
-                            ? BgColor.BgAppbarWhite
-                            : BgColor.BgAppbarBlack,
+                            ? BgColor.bgAppbarWhite
+                            : BgColor.bgAppbarBlack,
                       ),
                       title: Text(
                         'Mudar Tema',
                         style: TextStyle(
                             color: _isDarkMode
-                                ? BgColor.BgAppbarWhite
-                                : BgColor.BgAppbarBlack),
+                                ? BgColor.bgAppbarWhite
+                                : BgColor.bgAppbarBlack),
                       ),
                       onTap: () {
                         _toggleTheme();
@@ -130,14 +130,14 @@ class _HomeState extends State<Home> {
                       leading: Icon(
                         Icons.star,
                         color: _isDarkMode
-                            ? BgColor.BgAppbarWhite
-                            : BgColor.BgAppbarBlack,
+                            ? BgColor.bgAppbarWhite
+                            : BgColor.bgAppbarBlack,
                       ),
                       title: Text('Favoritos',
                           style: TextStyle(
                               color: _isDarkMode
-                                  ? BgColor.BgAppbarWhite
-                                  : BgColor.BgAppbarBlack)),
+                                  ? BgColor.bgAppbarWhite
+                                  : BgColor.bgAppbarBlack)),
                       onTap: () {
                         Navigator.push(
                           context,
@@ -149,14 +149,14 @@ class _HomeState extends State<Home> {
                       leading: Icon(
                         Icons.search,
                         color: _isDarkMode
-                            ? BgColor.BgAppbarWhite
-                            : BgColor.BgAppbarBlack,
+                            ? BgColor.bgAppbarWhite
+                            : BgColor.bgAppbarBlack,
                       ),
                       title: Text('Pesquisa',
                           style: TextStyle(
                               color: _isDarkMode
-                                  ? BgColor.BgAppbarWhite
-                                  : BgColor.BgAppbarBlack)),
+                                  ? BgColor.bgAppbarWhite
+                                  : BgColor.bgAppbarBlack)),
                       onTap: () {
                         Navigator.push(
                             context,
@@ -189,8 +189,8 @@ class _HomeState extends State<Home> {
                             snapshot.data![index]["cityName"],
                             style: TextStyle(
                               color: _isDarkMode
-                                  ? BgColor.BgAppbarWhite
-                                  : BgColor.BgAppbarBlack,
+                                  ? BgColor.bgAppbarWhite
+                                  : BgColor.bgAppbarBlack,
                             ),
                           ),
                           subtitle: Text(
@@ -199,8 +199,8 @@ class _HomeState extends State<Home> {
                                 snapshot.data![index]["cityCountry"],
                             style: TextStyle(
                               color: _isDarkMode
-                                  ? BgColor.BgAppbarWhite
-                                  : BgColor.BgAppbarBlack,
+                                  ? BgColor.bgAppbarWhite
+                                  : BgColor.bgAppbarBlack,
                             ),
                           ),
                         );

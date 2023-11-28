@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, unused_element
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, unused_element, camel_case_types, use_rethrow_when_possible, avoid_print, library_private_types_in_public_api
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -47,19 +47,19 @@ class _CityState extends State<City> {
   Color WeatherIdentifier(String weather) {
     switch (weather) {
       case 'Thunderstorm':
-        return BgColor.ThunderstormBG;
+        return BgColor.thunderstormBG;
       case 'Drizzle':
-        return BgColor.DrizzleBG;
+        return BgColor.drizzleBG;
       case 'Rain':
-        return BgColor.RainBG;
+        return BgColor.rainBG;
       case 'Snow':
-        return BgColor.SnowBG;
+        return BgColor.snowBG;
       case 'Clear':
-        return BgColor.ClearBG;
+        return BgColor.clearBG;
       case 'Clouds':
-        return BgColor.CloudsBG;
+        return BgColor.cloudsBG;
       default:
-        return BgColor.ClearBG;
+        return BgColor.clearBG;
     }
   }
 
@@ -106,21 +106,21 @@ class _CityState extends State<City> {
               backgroundColor: WeatherIdentifier(snapshot.data![0]['weather1']),
               appBar: AppBar(
                 backgroundColor:
-                    _isDarkMode ? BgColor.BgAppbarBlack : BgColor.BgAppbarWhite,
+                    _isDarkMode ? BgColor.bgAppbarBlack : BgColor.bgAppbarWhite,
                 title: Text(
                   "Lil Weather",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: _isDarkMode
-                        ? BgColor.BgAppbarWhite
-                        : BgColor.BgAppbarBlack,
+                        ? BgColor.bgAppbarWhite
+                        : BgColor.bgAppbarBlack,
                   ),
                 ),
                 centerTitle: true,
               ),
               drawer: Drawer(
                 backgroundColor:
-                    _isDarkMode ? BgColor.BgAppbarBlack : BgColor.BgAppbarWhite,
+                    _isDarkMode ? BgColor.bgAppbarBlack : BgColor.bgAppbarWhite,
                 child: Column(
                   children: [
                     DrawerHeader(
@@ -129,23 +129,23 @@ class _CityState extends State<City> {
                           icon: Icon(
                             Icons.close,
                             color: _isDarkMode
-                                ? BgColor.BgAppbarWhite
-                                : BgColor.BgAppbarBlack,
+                                ? BgColor.bgAppbarWhite
+                                : BgColor.bgAppbarBlack,
                           )),
                     ),
                     ListTile(
                       leading: Icon(
                         Icons.brightness_6,
                         color: _isDarkMode
-                            ? BgColor.BgAppbarWhite
-                            : BgColor.BgAppbarBlack,
+                            ? BgColor.bgAppbarWhite
+                            : BgColor.bgAppbarBlack,
                       ),
                       title: Text(
                         'Mudar Tema',
                         style: TextStyle(
                             color: _isDarkMode
-                                ? BgColor.BgAppbarWhite
-                                : BgColor.BgAppbarBlack),
+                                ? BgColor.bgAppbarWhite
+                                : BgColor.bgAppbarBlack),
                       ),
                       onTap: () {
                         _toggleTheme();
@@ -155,14 +155,14 @@ class _CityState extends State<City> {
                       leading: Icon(
                         Icons.star,
                         color: _isDarkMode
-                            ? BgColor.BgAppbarWhite
-                            : BgColor.BgAppbarBlack,
+                            ? BgColor.bgAppbarWhite
+                            : BgColor.bgAppbarBlack,
                       ),
                       title: Text('Favoritos',
                           style: TextStyle(
                               color: _isDarkMode
-                                  ? BgColor.BgAppbarWhite
-                                  : BgColor.BgAppbarBlack)),
+                                  ? BgColor.bgAppbarWhite
+                                  : BgColor.bgAppbarBlack)),
                       onTap: () {
                         Navigator.push(
                           context,
@@ -174,14 +174,14 @@ class _CityState extends State<City> {
                       leading: Icon(
                         Icons.search,
                         color: _isDarkMode
-                            ? BgColor.BgAppbarWhite
-                            : BgColor.BgAppbarBlack,
+                            ? BgColor.bgAppbarWhite
+                            : BgColor.bgAppbarBlack,
                       ),
                       title: Text('Pesquisa',
                           style: TextStyle(
                               color: _isDarkMode
-                                  ? BgColor.BgAppbarWhite
-                                  : BgColor.BgAppbarBlack)),
+                                  ? BgColor.bgAppbarWhite
+                                  : BgColor.bgAppbarBlack)),
                       onTap: () {
                         Navigator.push(
                             context,
@@ -198,11 +198,11 @@ class _CityState extends State<City> {
                   children: [
                     CityCard(
                         _isDarkMode
-                            ? BgColor.BgAppbarBlack
-                            : BgColor.BgAppbarWhite,
+                            ? BgColor.bgAppbarBlack
+                            : BgColor.bgAppbarWhite,
                         _isDarkMode
-                            ? BgColor.BgAppbarWhite
-                            : BgColor.BgAppbarBlack,
+                            ? BgColor.bgAppbarWhite
+                            : BgColor.bgAppbarBlack,
                         snapshot.data![0]['cityName'],
                         snapshot.data![0]['cityCountry'],
                         snapshot.data![0]['weather1'],
@@ -223,11 +223,11 @@ class _CityState extends State<City> {
                         snapshot.data![0]['description1']),
                     WetherCard(
                         _isDarkMode
-                            ? BgColor.BgAppbarBlack
-                            : BgColor.BgAppbarWhite,
+                            ? BgColor.bgAppbarBlack
+                            : BgColor.bgAppbarWhite,
                         _isDarkMode
-                            ? BgColor.BgAppbarWhite
-                            : BgColor.BgAppbarBlack,
+                            ? BgColor.bgAppbarWhite
+                            : BgColor.bgAppbarBlack,
                         snapshot.data![0]['timer5'],
                         snapshot.data![0]['timer6'],
                         snapshot.data![0]['timer7'],
@@ -346,7 +346,7 @@ class _CityCardState extends State<CityCard> {
                     ),
                   ),
                   Text(
-                    widget.description1 + ", " + widget.cityCountry,
+                    "${widget.description1}, ${widget.cityCountry}",
                     style: TextStyle(
                       fontWeight: FontWeight.normal,
                       fontSize: 20,
