@@ -1,12 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, unused_element, camel_case_types, use_rethrow_when_possible, avoid_print, library_private_types_in_public_api
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'package:lil_weather/constants/color.dart';
-import 'package:lil_weather/constants/urls.dart';
 import 'package:lil_weather/screens/home.dart';
 import 'package:lil_weather/screens/search.dart';
+import 'package:lil_weather/services/service.dart';
 
 class City extends StatefulWidget {
   final String cityName;
@@ -19,58 +16,13 @@ class City extends StatefulWidget {
 class _CityState extends State<City> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   Future<List<Map<String, dynamic>>>? _futureData;
-  bool _isDarkMode = false;
   bool _isFavorited = false;
-
-  Future<List<Map<String, dynamic>>> filtroDoFiltro() async {
-    try {
-      final response =
-          await http.get(Uri.parse(Constants.baseURL + widget.cityName));
-      print('Response status: ${response.statusCode}');
-      print('Response body: ${response.body}');
-      if (response.statusCode == 200) {
-        final List<dynamic> data =
-            jsonDecode(utf8.decode(response.bodyBytes))["content"];
-        print('Data: $data');
-        return data
-            .map((dynamic json) => json as Map<String, dynamic>)
-            .toList();
-      } else {
-        throw Exception("Erro ao carregar os dados da API");
-      }
-    } catch (e) {
-      print('Error: $e');
-      throw e;
-    }
-  }
-
-  Color WeatherIdentifier(String weather) {
-    switch (weather) {
-      case 'Thunderstorm':
-        return BgColor.thunderstormBG;
-      case 'Drizzle':
-        return BgColor.drizzleBG;
-      case 'Rain':
-        return BgColor.rainBG;
-      case 'Snow':
-        return BgColor.snowBG;
-      case 'Clear':
-        return BgColor.clearBG;
-      case 'Clouds':
-        return BgColor.cloudsBG;
-      default:
-        return BgColor.clearBG;
-    }
-  }
+  bool _isDarkMode = false;
 
   @override
   void initState() {
-    _futureData = filtroDoFiltro();
     super.initState();
-  }
-
-  void _openDrawer() {
-    _scaffoldKey.currentState!.openDrawer();
+    _futureData = CallService().filtroDoFiltro(cityName: widget.cityName);
   }
 
   void _closeDrawer() {
@@ -89,6 +41,22 @@ class _CityState extends State<City> {
     });
   }
 
+  Color _getBgColor() {
+    if (_isDarkMode == true) {
+      return BgColor.bgAppbarBlack;
+    } else {
+      return BgColor.bgAppbarWhite;
+    }
+  }
+
+  Color _getTextColor() {
+    if (_isDarkMode == true) {
+      return BgColor.bgAppbarWhite;
+    } else {
+      return BgColor.bgAppbarBlack;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
@@ -103,24 +71,22 @@ class _CityState extends State<City> {
           if (snapshot.hasData && snapshot.data!.isNotEmpty) {
             return Scaffold(
               key: _scaffoldKey,
-              backgroundColor: WeatherIdentifier(snapshot.data![0]['weather1']),
+              backgroundColor: CallService().WeatherIdentifier(weather: snapshot.data![0]['weather1']),
               appBar: AppBar(
                 backgroundColor:
-                    _isDarkMode ? BgColor.bgAppbarBlack : BgColor.bgAppbarWhite,
+                    _getBgColor(),
                 title: Text(
                   "Lil Weather",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: _isDarkMode
-                        ? BgColor.bgAppbarWhite
-                        : BgColor.bgAppbarBlack,
+                    color: _getBgColor(),
                   ),
                 ),
                 centerTitle: true,
               ),
               drawer: Drawer(
                 backgroundColor:
-                    _isDarkMode ? BgColor.bgAppbarBlack : BgColor.bgAppbarWhite,
+                   _getBgColor(),
                 child: Column(
                   children: [
                     DrawerHeader(
@@ -128,24 +94,18 @@ class _CityState extends State<City> {
                           onPressed: _closeDrawer,
                           icon: Icon(
                             Icons.close,
-                            color: _isDarkMode
-                                ? BgColor.bgAppbarWhite
-                                : BgColor.bgAppbarBlack,
+                            color: _getTextColor(),
                           )),
                     ),
                     ListTile(
                       leading: Icon(
                         Icons.brightness_6,
-                        color: _isDarkMode
-                            ? BgColor.bgAppbarWhite
-                            : BgColor.bgAppbarBlack,
+                        color: _getTextColor()
                       ),
                       title: Text(
                         'Mudar Tema',
                         style: TextStyle(
-                            color: _isDarkMode
-                                ? BgColor.bgAppbarWhite
-                                : BgColor.bgAppbarBlack),
+                            color: _getTextColor()),
                       ),
                       onTap: () {
                         _toggleTheme();
@@ -154,15 +114,11 @@ class _CityState extends State<City> {
                     ListTile(
                       leading: Icon(
                         Icons.star,
-                        color: _isDarkMode
-                            ? BgColor.bgAppbarWhite
-                            : BgColor.bgAppbarBlack,
+                        color: _getTextColor(),
                       ),
                       title: Text('Favoritos',
                           style: TextStyle(
-                              color: _isDarkMode
-                                  ? BgColor.bgAppbarWhite
-                                  : BgColor.bgAppbarBlack)),
+                              color: _getTextColor())),
                       onTap: () {
                         Navigator.push(
                           context,
@@ -173,15 +129,11 @@ class _CityState extends State<City> {
                     ListTile(
                       leading: Icon(
                         Icons.search,
-                        color: _isDarkMode
-                            ? BgColor.bgAppbarWhite
-                            : BgColor.bgAppbarBlack,
+                        color: _getTextColor(),
                       ),
                       title: Text('Pesquisa',
                           style: TextStyle(
-                              color: _isDarkMode
-                                  ? BgColor.bgAppbarWhite
-                                  : BgColor.bgAppbarBlack)),
+                              color: _getTextColor())),
                       onTap: () {
                         Navigator.push(
                             context,
@@ -197,12 +149,8 @@ class _CityState extends State<City> {
                   physics: NeverScrollableScrollPhysics(),
                   children: [
                     CityCard(
-                        _isDarkMode
-                            ? BgColor.bgAppbarBlack
-                            : BgColor.bgAppbarWhite,
-                        _isDarkMode
-                            ? BgColor.bgAppbarWhite
-                            : BgColor.bgAppbarBlack,
+                        _getBgColor(),
+                        _getTextColor(),
                         snapshot.data![0]['cityName'],
                         snapshot.data![0]['cityCountry'],
                         snapshot.data![0]['weather1'],
@@ -222,12 +170,8 @@ class _CityState extends State<City> {
                         snapshot.data![0]['timer5'],
                         snapshot.data![0]['description1']),
                     WetherCard(
-                        _isDarkMode
-                            ? BgColor.bgAppbarBlack
-                            : BgColor.bgAppbarWhite,
-                        _isDarkMode
-                            ? BgColor.bgAppbarWhite
-                            : BgColor.bgAppbarBlack,
+                        _getBgColor(),
+                        _getTextColor(),
                         snapshot.data![0]['timer5'],
                         snapshot.data![0]['timer6'],
                         snapshot.data![0]['timer7'],

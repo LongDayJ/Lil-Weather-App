@@ -5,32 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:lil_weather/constants/urls.dart';
 import 'package:lil_weather/screens/city.dart';
+import 'package:lil_weather/services/service.dart';
 
 class PesquisaPage extends SearchDelegate<String> {
   Future<List<Map<String, dynamic>>>? _futureData;
-
   String get searchFieldLabel => 'Digite a cidade aqui Cidade';
-
-  Future<List<Map<String, dynamic>>> sugestoes() async {
-    try {
-      var response = await http.get(Uri.parse("${Constants.baseURL}$query"));
-      print('Response status: ${response.statusCode}');
-      if (response.statusCode == 200) {
-        final List<dynamic> data =
-            jsonDecode(utf8.decode(response.bodyBytes))["content"];
-        print('Data: $data');
-        return data
-            .map((dynamic json) => json as Map<String, dynamic>)
-            .toList();
-      } else {
-        throw Exception("Erro ao carregar os dados da API");
-      }
-    } catch (e) {
-      print('Error: $e');
-      throw e;
-    }
-  }
-
+  
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -64,7 +44,7 @@ class PesquisaPage extends SearchDelegate<String> {
       return Container();
     }
     return FutureBuilder(
-      future: _futureData = sugestoes(),
+      future: _futureData = CallService().filtroDoFiltro(cityName: query),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           return ListView.builder(
