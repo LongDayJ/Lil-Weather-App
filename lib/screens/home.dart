@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:lil_weather/constants/color.dart';
 import 'package:lil_weather/screens/city.dart';
 import 'package:lil_weather/screens/search.dart';
-import 'package:lil_weather/services/prefs_services.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:lil_weather/services/service.dart';
 
 class Home extends StatefulWidget {
@@ -148,29 +146,36 @@ class _HomeState extends State<Home> {
                     ListView.builder(
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
-                        return ListTile(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => City(
-                                        cityName: snapshot.data![index]
-                                            ["cityName"],
-                                      )),
-                            );
-                          },
-                          title: Text(
-                            snapshot.data![index]["cityName"],
-                            style: TextStyle(
-                              color: _getTextColor(),
-                            ),
+                        return Container(
+                          margin: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: _getBgColor(),
+                            borderRadius: BorderRadius.circular(10),
                           ),
-                          subtitle: Text(
-                            snapshot.data![index]["description1"] +
-                                ", " +
-                                snapshot.data![index]["cityCountry"],
-                            style: TextStyle(
-                              color: _getTextColor(),
+                          child: ListTile(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => City(
+                                          cityName: snapshot.data![index]
+                                              ["cityName"],
+                                        )),
+                              );
+                            },
+                            title: Text(
+                              snapshot.data![index]["cityName"],
+                              style: TextStyle(
+                                color: _getTextColor(),
+                              ),
+                            ),
+                            subtitle: Text(
+                              snapshot.data![index]["description1"] +
+                                  ", " +
+                                  snapshot.data![index]["cityCountry"],
+                              style: TextStyle(
+                                color: _getTextColor(),
+                              ),
                             ),
                           ),
                         );

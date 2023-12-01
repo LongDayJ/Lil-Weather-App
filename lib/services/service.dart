@@ -6,9 +6,11 @@ import 'package:lil_weather/constants/color.dart';
 import 'package:lil_weather/constants/urls.dart';
 
 class CallService {
-    Future<List<Map<String, dynamic>>> filtroDoFiltro({required String cityName}) async {
+  Future<List<Map<String, dynamic>>> filtroDoFiltro(
+      {required String cityName}) async {
     try {
-      final response = await http.get(Uri.parse("${Constants.baseURL}$cityName"));
+      final response =
+          await http.get(Uri.parse("${Constants.baseURL}$cityName"));
       print('Response status: ${response.statusCode}');
       print('Response body: ${response.body}');
       if (response.statusCode == 200) {
@@ -26,8 +28,8 @@ class CallService {
       throw e;
     }
   }
-  
-    Color WeatherIdentifier({required String weather}) {
+
+  Color WeatherIdentifier({required String weather}) {
     switch (weather) {
       case 'Thunderstorm':
         return BgColor.thunderstormBG;

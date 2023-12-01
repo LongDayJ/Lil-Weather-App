@@ -1,9 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, non_constant_identifier_names, unused_element, camel_case_types, use_rethrow_when_possible, avoid_print, library_private_types_in_public_api
 import 'package:flutter/material.dart';
 import 'package:lil_weather/constants/color.dart';
+import 'package:lil_weather/data/fav_city_dao.dart';
+import 'package:lil_weather/data/weather.dart';
 import 'package:lil_weather/screens/home.dart';
 import 'package:lil_weather/screens/search.dart';
 import 'package:lil_weather/services/service.dart';
+import 'package:sqflite/sqflite.dart';
 
 class City extends StatefulWidget {
   final String cityName;
@@ -274,7 +277,7 @@ class _CityCardState extends State<CityCard> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Construtor_cidade(widget.Weather1, widget.Temp1),
-                    favButton(widget.TextColor),
+                    favButton(widget.TextColor, widget.cityName, widget.description1, widget.cityCountry),
                   ],
                 ),
               ),
@@ -555,7 +558,10 @@ class _WetherCardState extends State<WetherCard> {
 
 class favButton extends StatefulWidget {
   final Color TextColor;
-  const favButton(this.TextColor, {super.key});
+  final String cityName;
+  final String description1;
+  final String cityCountry;
+  const favButton(this.TextColor, this.cityName, this.description1, this.cityCountry, {super.key});
 
   @override
   State<favButton> createState() => _favButtonState();
@@ -577,6 +583,11 @@ class _favButtonState extends State<favButton> {
         setState(() {
           isFav = !isFav;
         });
+        FavCityDao().save(Weather(
+          widget.cityName,
+          "description1",
+          "cityCountry",
+        ));
       },
     );
   }
